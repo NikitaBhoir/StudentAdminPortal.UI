@@ -22,7 +22,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "node_modules/lexboxgrid/dist/flexboxgrid.min.css"
+              "node_modules/flexboxgrid/dist/flexboxgrid.min.css"
             ],
             "scripts": []
           },
