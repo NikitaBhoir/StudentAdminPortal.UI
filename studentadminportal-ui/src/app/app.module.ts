@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StudentsComponent } from './students/students.component';
+import { ViewStudentComponent } from './students/view-student/view-student.component';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -52,11 +53,18 @@ import { MatTableModule } from '@angular/material/table';
 import { TopNavComponent } from './layout/top-nav/top-nav.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, TopNavComponent, StudentsComponent],
+  declarations: [
+    AppComponent,
+    TopNavComponent,
+    StudentsComponent,
+    ViewStudentComponent,
+  ],
   imports: [
     HttpClientModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     // Add below modules to the imports array for material-ui

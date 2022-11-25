@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+}
+.searh-input {
+  border: 1px solid #ccc;
+  padding: 0px 16px;
+  border-radius: 3px;
+}
+.searh-input:active {
+  border: 1px solid #bbb;
+}
+.searh-input:focus {
+  border: 1px solid #aaa;
+}
