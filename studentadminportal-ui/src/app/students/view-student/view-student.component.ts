@@ -12,6 +12,7 @@ import { StudentService } from '../student.service';
 })
 export class ViewStudentComponent implements OnInit {
   studentId: string | null | undefined;
+  header: string | undefined = '';
   student: Student = {
     id: '',
     firstName: '',
@@ -33,7 +34,7 @@ export class ViewStudentComponent implements OnInit {
   };
 
   gendersList: Gender[] = [];
-
+  isNewStudent = false;
   constructor(
     private readonly studentService: StudentService,
     private readonly route: ActivatedRoute,
@@ -44,6 +45,17 @@ export class ViewStudentComponent implements OnInit {
       this.studentId = params.get('id'); // retrives param value from route and assign it to variable
 
       if (this.studentId) {
+        // if route contains add then new student functionality
+        if (this.studentId.toLowerCase() === 'Add'.toLowerCase()) {
+          this.isNewStudent = true;
+          this.header = 'Add New Student';
+        } else {
+          // -> Existing Student Functionality
+          this.isNewStudent = false;
+          this.header = 'Edit Student';
+        }
+        //else existing student functionality
+
         this.studentService.getStudent(this.studentId).subscribe(
           (successResponse) => {
             console.log('successResponse', successResponse.data);
@@ -65,5 +77,16 @@ export class ViewStudentComponent implements OnInit {
         );
       }
     });
+  }
+
+  onAdd(): void {
+    this.studentService.addStudent(this.student).subscribe(
+      (successResponse) => {
+        console.log('successResponse-Add', successResponse);
+      },
+      (errorResponse) => {
+        console.log('errorResponse-Add', errorResponse);
+      }
+    );
   }
 }
