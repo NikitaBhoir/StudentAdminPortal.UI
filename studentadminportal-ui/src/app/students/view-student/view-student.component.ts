@@ -13,6 +13,7 @@ import { StudentService } from '../student.service';
 export class ViewStudentComponent implements OnInit {
   studentId: string | null | undefined;
   header: string | undefined = '';
+  displayProfileImageUrl = '';
   student: Student = {
     id: '',
     firstName: '',
@@ -49,6 +50,7 @@ export class ViewStudentComponent implements OnInit {
         if (this.studentId.toLowerCase() === 'Add'.toLowerCase()) {
           this.isNewStudent = true;
           this.header = 'Add New Student';
+          this.setImage();
         } else {
           // -> Existing Student Functionality
           this.isNewStudent = false;
@@ -60,6 +62,7 @@ export class ViewStudentComponent implements OnInit {
           (successResponse) => {
             console.log('successResponse', successResponse.data);
             this.student = successResponse.data;
+            // this.setImage();
           },
           (errorResponse) => {
             console.log('errorResponse', errorResponse);
@@ -88,5 +91,16 @@ export class ViewStudentComponent implements OnInit {
         console.log('errorResponse-Add', errorResponse);
       }
     );
+  }
+
+  private setImage() {
+    if (this.student.profileImageUrl) {
+      //then fetch the img by url
+    } else {
+      //display default img
+      this.displayProfileImageUrl = '/assets/images/defaultUser.png'; // ../../../
+      console.log('else part');
+    }
+    //
   }
 }
